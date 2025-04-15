@@ -38,6 +38,7 @@ cd ..
 
 # Step 7: Install the rest libraries (supervision, opencv, torch, ultralytics,...)
 echo "📦 Cài đặt supervision, opencv, torch, ultralytics..."
-pip install supervision opencv-python numpy torch torchvision torchaudio PyYAML tqdm ultralytics --index-url https://download.pytorch.org/whl/cu118
+pip install ultralytics
+pip install supervision opencv-python numpy torch torchvision PyYAML tqdm --index-url https://download.pytorch.org/whl/cu118
 
 echo "✅ Hoàn tất! Bạn có thể kích hoạt môi trường bằng: source venv/bin/activate"
