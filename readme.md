@@ -1,7 +1,7 @@
 # YOLOv8 Tank Detection: Auto-Labeling and Training Workflow
 
 This project is based on the excellent tutorial by **Roboflow** on YouTube:  
-📺 [Watch the Roboflow tutorial here](https://www.youtube.com/watch?v=2OjjWh-8Iv0)
+📺 [Watch the Roboflow tutorial here](https://www.youtube.com/watch?v=gKTYMfwPo4M)
 
 It provides a fully automated pipeline for:
 - Generating bounding box annotations for "tank" objects using **GroundingDINO**
