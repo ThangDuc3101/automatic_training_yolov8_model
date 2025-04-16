@@ -1,44 +1,21 @@
 #!/bin/bash
+sudo apt update
+sudo apt install python3.10-venv -y
 
-# ---------------------------------------------
-# YOLOv8 Tank Detection - Setup Environment
-# ---------------------------------------------
-set -e
+# Create Python virtual environment
+python3 -m venv autodistill_env
+source autodistill_env/bin/activate
 
-PROJECT_DIR=$(pwd)
-echo "🚀 Bắt đầu cài đặt môi trường tại: $PROJECT_DIR"
-
-# Step 1: Create virtual environment
-echo "🔧 Tạo virtual environment..."
-python3 -m venv venv
-
-# Step 2: Activate virtual environment
-echo "✅ Kích hoạt môi trường..."
-source venv/bin/activate
-
-# Step 3: Upgrade pip and install wheel
-echo "📦 Cập nhật pip và cài đặt wheel..."
+# Upgrade pip
 pip install --upgrade pip
-pip install wheel
 
-# Step 4: Install transformers and peft
-echo "📚 Cài transformers==4.35.2 và peft==0.9.0..."
-pip install transformers==4.35.2 peft==0.9.0
+# Install autodistill core and plugins
+pip install autodistill autodistill-grounded-sam autodistill-yolov8 roboflow
+pip install scikit-learn
 
-# Step 5: Install autodistill core
-echo "📦 Cài autodistill core từ PyPI..."
-pip install autodistill
+# Install PyTorch (CUDA 11.8) - bạn có thể đổi link nếu dùng CPU hoặc CUDA khác
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 
-# Step 6: Cài autodistill-grounding-dino từ GitHub
-echo "🔧 Clone và cài autodistill-grounding-dino từ GitHub..."
-git clone https://github.com/autodistill/autodistill-grounding-dino.git
-cd autodistill-grounding-dino
-pip install -e .
-cd ..
+echo "✅ All dependencies are ready."
+echo "👉 To activate environment: source autodistill_env/bin/activate"
 
-# Step 7: Install the rest libraries (supervision, opencv, torch, ultralytics,...)
-echo "📦 Cài đặt supervision, opencv, torch, ultralytics..."
-pip install ultralytics
-pip install supervision opencv-python numpy torch torchvision PyYAML tqdm --index-url https://download.pytorch.org/whl/cu118
-
-echo "✅ Hoàn tất! Bạn có thể kích hoạt môi trường bằng: source venv/bin/activate"
